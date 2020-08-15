@@ -6,7 +6,7 @@ all: build
 GO_BUILD_PACKAGES :=./cmd/...
 GO_TEST_PACKAGES :=./cmd/... ./pkg/...
 
-IMAGE_REGISTRY :=quay.io
+IMAGE_REGISTRY :=registry.apps.public.ic.cloud.snapp.ir
 
 # Include the library makefile
 include $(addprefix ./vendor/github.com/openshift/build-machinery-go/make/, \
@@ -21,8 +21,8 @@ include $(addprefix ./vendor/github.com/openshift/build-machinery-go/make/, \
 # $2 - Dockerfile path
 # $3 - context directory for image build
 # It will generate target "image-$(1)" for builing the image an binding it as a prerequisite to target "images".
-$(call build-image,openshift-acme-controller,$(IMAGE_REGISTRY)/tnozicka/openshift-acme:controller,./images/openshift-acme-controller/Dockerfile,.)
-$(call build-image,openshift-acme-exposer,$(IMAGE_REGISTRY)/tnozicka/openshift-acme:exposer, ./images/openshift-acme-exposer/Dockerfile,.)
+$(call build-image,openshift-acme-controller,$(IMAGE_REGISTRY)/letsencrypt-acme/openshift-acme:controller,./images/openshift-acme-controller/Dockerfile,.)
+$(call build-image,openshift-acme-exposer,$(IMAGE_REGISTRY)/letsencrypt-acme/openshift-acme:exposer, ./images/openshift-acme-exposer/Dockerfile,.)
 
 
 verify-deploy-files:

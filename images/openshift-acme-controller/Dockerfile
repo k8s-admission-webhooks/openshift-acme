@@ -3,6 +3,6 @@ WORKDIR /go/src/github.com/tnozicka/openshift-acme
 COPY . .
 RUN make build --warn-undefined-variables
 
-FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
+FROM emamihe/ubi-minimal
 COPY --from=builder /go/src/github.com/tnozicka/openshift-acme/openshift-acme-controller /usr/bin/openshift-acme-controller
 ENTRYPOINT ["/usr/bin/openshift-acme-controller"]
