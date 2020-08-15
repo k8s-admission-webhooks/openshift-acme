@@ -25,5 +25,5 @@ jobs:
         docker_pwd: ${{ secrets.SNAPP_IC_PASSWORD }}
       run: |
         docker login  -u "$docker_uid" -p "$docker_pwd" "$docker_server" && \
-        docker push letsencrypt-acme/openshift-acme-controller:0.8.1 && \
-        docker push letsencrypt-acme/openshift-acme-exposer:0.8.1
+        docker push $docker_server/letsencrypt-acme/openshift-acme-controller:0.8.1 && \
+        docker push $docker_server/letsencrypt-acme/openshift-acme-exposer:0.8.1
